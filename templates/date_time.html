@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lingvo</title>
+    {% load static %}
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% endblock styles %}
+</head>
+<body>
+    <div class="container-date">
+        <div class="container">
+            <button class="back-button" onclick="window.history.back()" aria-label="Назад">&#8592; Назад</button>
+            <h1>Дата и время</h1>
+
+            <section>
+                <h2>Февраль</h2>
+                <div class="date-block">
+                    <div class="date">1</div>
+                    <div class="date">2</div>
+                    <div class="date">3</div>
+                    <div class="date">4</div>
+                    <div class="date">5</div>
+                    <div class="date">6</div>
+                    <div class="date">7</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Время</h2>
+                <div class="time-block">
+                    <div class="time">10:00</div>
+                    <div class="time">12:00</div>
+                    <div class="time">14:00</div>
+                    <div class="time">16:00</div>
+                </div>
+            </section>
+
+
+            <button class="button">Записаться</button>
+        </div>
+    </div>
+</body>
+</html>

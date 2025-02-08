@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lingvo</title>
+    {% load static %}
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% endblock styles %}
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.history.back()">&#8592; Назад</button>
+
+        <h1>Индивидуальные занятия</h1>
+        <div class="block">
+            <img src="{% static 'logo.png' %}" alt="Иконка" class="icon">
+            <a href="{% url 'teacher-page' %}">Выбрать преподавателя</a>
+        </div>
+        <h1>Запланированные занятия</h1>
+        <div class="block" id="future-lessons">
+            <span class="details">
+                <strong>01 февраля 2025<br>19:30</strong><br>Петр Петров
+            </span>
+            <img src="image/profile.jpg" alt="Иконка" class="icon">
+        </div>
+        <h1>Прошедшие занятия</h1>
+        <div class="block" id="past-lessons">
+            <span class="details">
+                <strong>02 февраля 2025<br>20:00</strong><br>Иван Иванов
+            </span>
+            <img src="image/profile.jpg" alt="Иконка" class="icon">
+        </div>
+    </div>
+</body>
+</html>
