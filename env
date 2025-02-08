@@ -1,6 +1,0 @@
-DJANGO_SECRET_KEY = 'django-insecure-#j6+9hu!zxic*xr#63(%o$qgyo&@5t9dyo)&7+pk!=dwk*gk^f'
-DB_NAME=school
-DB_USER=student
-DB_PASSWORD=123
-DB_HOST=localhost
-DB_PORT=5432
