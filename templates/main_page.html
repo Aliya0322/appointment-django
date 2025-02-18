@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Lingvo</title>
     {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     {% block styles %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% endblock styles %}
@@ -14,7 +15,7 @@
         <img src="{% static 'header.png' %}" alt="Хедер" class="header-image">
         <div class="block">
             <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
-            <a href="https://www.mylingvoacademy.ru">О нас</a>
+            <a href="#">О нас</a>
         </div>
         <div class="block">
             <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
@@ -22,7 +23,7 @@
         </div>
         <div class="block">
             <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
-            <a href="https://mylingvoacademy.ru/programs">Программы обучения</a>
+            <a href="#">Программы обучения</a>
         </div>
     </div>
 </body>

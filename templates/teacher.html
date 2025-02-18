@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Lingvo</title>
     {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     {% block styles %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% endblock styles %}
@@ -15,18 +16,12 @@
 
         <h1>Преподаватели</h1>
         {% for teacher in teachers %}
-        <div class="block">
-            <img src="image/profile.jpg" alt="Иконка" class="icon">
-            <span>{{ teacher.name }}</span>
-        </div>
-        <div class="block">
-            <img src="image/profile.jpg" alt="Иконка" class="icon">
-            <span>{{ teacher.name }}</span>
-        </div>
-        <div class="block" id="teacher">
-            <img src="image/profile.jpg" alt="Иконка" class="icon">
-            <span>{{ teacher.name }}</span>
-        </div>
+            <a href="{% url 'date-page' teacher.id %}">
+                <div class="block">
+                    <img src="{% static 'image/profile.jpg' %}" alt="Иконка" class="icon">
+                    <span>{{ teacher.name }}</span>
+                </div>
+            </a>
         {% endfor %}
     </div>
 </body>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Lingvo</title>
     {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     {% block styles %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% endblock styles %}
@@ -13,34 +14,93 @@
     <div class="container-date">
         <div class="container">
             <button class="back-button" onclick="window.history.back()" aria-label="Назад">&#8592; Назад</button>
+
             <h1>Дата и время</h1>
+            <h3>{{ current_month|capfirst }}</h3>
 
-            <section>
-                <h2>Февраль</h2>
-                <div class="date-block">
-                    <div class="date">1</div>
-                    <div class="date">2</div>
-                    <div class="date">3</div>
-                    <div class="date">4</div>
-                    <div class="date">5</div>
-                    <div class="date">6</div>
-                    <div class="date">7</div>
-                </div>
-            </section>
-
-            <section>
-                <h2>Время</h2>
-                <div class="time-block">
-                    <div class="time">10:00</div>
-                    <div class="time">12:00</div>
-                    <div class="time">14:00</div>
-                    <div class="time">16:00</div>
-                </div>
-            </section>
+            <div class="date-block">
+    {% for date in next_7_days %}
+        <div class="date {% if date.is_active %}active{% else %}inactive{% endif %}
+            {% if date.date in active_dates %}has-time{% endif %}"
+             data-date="{{ date.date|date:'Y-m-d' }}">
+            <span>{{ date.date|date:"D" }}</span>
+            <br>
+            <strong>{{ date.date|date:"d" }}</strong>
+        </div>
+    {% endfor %}
+</div>
 
 
-            <button class="button">Записаться</button>
+<!-- Блок с временем -->
+<h3>Время</h3>
+<div class="time-block">
+    {% for slot in open_slots %}
+        <div class="time" data-slot-id="{{ slot.id }}" data-date="{{ slot.date|date:'Y-m-d' }}" data-time="{{ slot.time|date:'H:i' }}">
+            {{ slot.time|date:"H:i" }}
+        </div>
+    {% endfor %}
+</div>
+
+            <!-- Кнопка "Записаться" -->
+            <button id="bookButton" class="button" disabled>Записаться</button>
         </div>
     </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    let selectedSlotId = null;
+    let selectedDate = null;
+
+    // Обработчик выбора даты
+    document.querySelectorAll(".date").forEach(dateElem => {
+        dateElem.addEventListener("click", function () {
+            document.querySelectorAll(".date").forEach(el => el.classList.remove("selected"));
+            this.classList.add("selected");
+
+            selectedDate = this.dataset.date;
+            console.log("Выбрана дата:", selectedDate); // Лог для проверки
+            updateAvailableTimes(selectedDate);
+        });
+    });
+
+    // Фильтрация доступного времени для выбранной даты
+    function updateAvailableTimes(selectedDate) {
+        let found = false;
+        document.querySelectorAll(".time").forEach(timeElem => {
+            if (timeElem.dataset.date === selectedDate) {
+                timeElem.style.display = "block"; // Показываем время
+                found = true;
+            } else {
+                timeElem.style.display = "none"; // Скрываем время для других дат
+            }
+        });
+
+        if (!found) {
+            console.log("Для этой даты нет доступного времени.");
+        }
+    }
+
+    // Обработчик выбора времени
+    document.querySelectorAll(".time").forEach(timeElem => {
+        timeElem.addEventListener("click", function () {
+            document.querySelectorAll(".time").forEach(el => el.classList.remove("selected"));
+            this.classList.add("selected");
+
+            selectedSlotId = this.dataset.slotId;
+            document.getElementById("bookButton").disabled = false; // Активируем кнопку
+        });
+    });
+
+    // Обработчик кнопки "Записаться"
+    document.getElementById("bookButton").addEventListener("click", function () {
+        if (selectedSlotId) {
+            window.location.href = `{% url 'confirmation-page' %}?slot_id=${selectedSlotId}`;
+        } else {
+            alert("Пожалуйста, выберите время!");
+        }
+    });
+});
+
+</script>
 </body>
 </html>

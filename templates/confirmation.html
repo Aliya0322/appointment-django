@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>My Lingvo</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% endblock styles %}
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.history.back()">&#8592; Назад</button>
+
+        <h1>Проверка записи</h1>
+        <div class="block" id="teacherBlock">
+            <div class="teacher-option">
+                <img src="{% static 'image/profile.jpg' %}" alt="Иконка" class="icon">
+                <span>{{ teacher }}</span> <!-- Отображаем имя преподавателя -->
+            </div>
+        </div>
+
+        <!-- Блок дата и время (только отображение, без клика) -->
+        <h3>Дата и время</h3>
+        <div class="block" id="timeBlock-confirm">
+            <div class="time">
+                {{ selected_date|date:"d M Y" }} в {{ selected_time }}
+            </div>
+        </div>
+
+        <!-- Блок с дополнительными данными (категория и уровень) -->
+        <div class="block" id="additionalDataBlock">
+            <form id="additionalDataForm">
+                <label for="program">Выберите категорию:</label>
+                <select id="program" name="program">
+                    <option value="children">Английский язык для детей 7-11 лет</option>
+                    <option value="teens">Английский язык для подростков 12-18 лет</option>
+                    <option value="adults">Английский язык для взрослых от 18 лет</option>
+                </select>
+                <label for="level">Уровень владения языком:</label>
+                <select id="level" name="level">
+                    <option value="beginner">Начальный</option>
+                    <option value="intermediate">Средний</option>
+                    <option value="advanced">Продвинутый</option>
+                </select>
+            </form>
+        </div>
+
+        <!-- Кнопка подтверждения -->
+        <button type="button" class="button" id="confirmButton">Подтвердить</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Оставляем только обработчик для подтверждения
+            document.getElementById('confirmButton').addEventListener('click', function() {
+                var program = document.getElementById('program').value;
+                var level = document.getElementById('level').value;
+
+                // Отправка данных на сервер
+                fetch('{% url 'book_slot' %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({
+                        teacher_id: "{{ teacher.id }}",  // Мы передаем ID преподавателя в запрос
+                        slot_id: "{{ slot.id }}",  // Мы передаем ID слота в запрос
+                        program: program,
+                        level: level
+                    })
+                }).then(response => response.json())
+                  .then(data => {
+                      if (data.success) {
+                          alert('Бронирование успешно завершено!');
+                          window.location.href = '{% url 'main-page' %}';
+                      } else {
+                          alert('Ошибка при бронировании.');
+                      }
+                  });
+            });
+        });
+    </script>
+</body>
+</html>
+

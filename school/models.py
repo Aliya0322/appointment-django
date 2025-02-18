@@ -1,11 +1,28 @@
 from django.db import models
 
-class UserManager(models.Manager):
-    def get_students(self):
-        return self.get_queryset().filter(role='student')
 
-    def get_teachers(self):
-        return self.get_queryset().filter(role='teacher')
+class UserManager(models.Manager):
+    def create_user(self, telegram_id, name="Без имени", role="student", phone=None):
+        if not telegram_id:
+            raise ValueError("Пользователь должен иметь Telegram ID")
+        user = self.model(telegram_id=telegram_id, name=name, role=role, phone=phone)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, telegram_id, name, role="admin", phone=None):
+        user = self.create_user(telegram_id, name, role, phone)
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+
+def get_students(self):
+    return self.get_queryset().filter(role='student')
+
+
+def get_teachers(self):
+    return self.get_queryset().filter(role='teacher')
+
 
 class User(models.Model):
     ROLE_CHOICES = [
@@ -27,14 +44,11 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-
     class Meta:
         db_table = "user"
         indexes = [models.Index(fields=['name'])]
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
-
-
 
 
 class Teacher(models.Model):
@@ -87,7 +101,8 @@ class Booking(models.Model):
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь")
     open_slot = models.OneToOneField(OpenSlot, on_delete=models.CASCADE, verbose_name="Открытый слот")
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, verbose_name="Статус бронирования", default="confirmed")
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, verbose_name="Статус бронирования",
+                              default="confirmed")
 
     objects = models.Manager()
 
@@ -97,9 +112,3 @@ class Booking(models.Model):
     class Meta:
         verbose_name = "Бронирование"
         verbose_name_plural = "Бронирования"
-
-
-
-
-
-

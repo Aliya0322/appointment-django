@@ -76,7 +76,7 @@ a {
     margin-bottom: 20px;
 }
 
-/* Стили для блока с прошедшими занятиями */
+/* Стили для блока с прошедшими и будущими занятиями */
 .block#past-lessons, .block#future-lessons {
     justify-content: space-between;
 }
@@ -94,6 +94,7 @@ a {
     height: 60px;
     border-radius: 50%;
 }
+
 
 /* Стили для блока с преподавателями */
 .block#teacher img.icon {
@@ -125,7 +126,7 @@ a {
 }
 
 .date.selected, .time.selected {
-    background-color: #ffcc99; /* Нежно-оранжевый цвет */
+    background-color: #ffcc99;
     border-color: #ffcc99;
 }
 
@@ -147,14 +148,48 @@ a {
     background-color: #ffb366;
 }
 
-/* Стили для текста "Оплачено" (зеленый цвет) */
-.paid {
-    color: green;
+/* Для активных дат с временем */
+.date.has-time {
     font-weight: bold;
+    color: #333; /* Яркий цвет, например темный */
+    cursor: pointer; /* Сделаем их кликабельными */
 }
 
-/* Стили для текста "Использован" (красный цвет) */
-.used {
-    color: red;
+/* Для дат без времени */
+.date.inactive {
+    color: #aaa; /* Тусклый цвет */
+    cursor: not-allowed; /* Делаем их некликабельными */
+}
+
+.date.inactive:hover {
+    background-color: transparent; /* Убираем эффект наведения для неактивных дат */
+}
+
+/* Стили для формы дополнительных данных */
+#additionalDataForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Стили для label */
+#additionalDataForm label {
     font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Выпадающие списки (select) */
+#additionalDataForm select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+timeBlock-confirm {
+border: none;
+padding: 10px;
 }
