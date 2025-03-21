@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-#j6+9hu!zxic*xr#63(%o$qgyo&@5t9dyo)&7+pk!=dwk*gk^f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["app.mylingoacademy.ru"]
 
 
 # Application definition
