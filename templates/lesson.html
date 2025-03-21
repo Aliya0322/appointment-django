@@ -7,7 +7,7 @@
     {% load static %}
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     {% block styles %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock styles %}
 </head>
 <body>
@@ -25,52 +25,16 @@
         <strong>02 февраля 2025<br>19:30</strong><br>Петр Петров
     </span>
     <button class="cancel-button" data-lesson-id="1">Отменить</button>
-    <img src="image/profile.jpg" alt="Иконка" class="icon">
+    <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
 </div>
         <h1>Прошедшее занятие</h1>
         <div class="block" id="past-lessons">
             <span class="details">
                 <strong>01 февраля 2025<br>20:00</strong><br>Иван Иванов
             </span>
-            <img src="image/profile.jpg" alt="Иконка" class="icon">
+            <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
         </div>
     </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".cancel-button").forEach(button => {
-        button.addEventListener("click", function() {
-            let lessonId = this.getAttribute("data-lesson-id");
-
-            if (confirm("Вы уверены, что хотите отменить занятие?")) {
-                fetch("/cancel_lesson/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRFToken": getCSRFToken()
-                    },
-                    body: JSON.stringify({ lesson_id: lessonId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert("Занятие отменено!");
-                        this.closest(".block").remove(); // Удаляем блок с занятием
-                    } else {
-                        alert("Ошибка при отмене занятия.");
-                    }
-                })
-                .catch(error => console.error("Ошибка:", error));
-            }
-        });
-    });
-});
-
-// Функция для получения CSRF-токена
-function getCSRFToken() {
-    return document.cookie.split("; ")
-        .find(row => row.startsWith("csrftoken="))
-        ?.split("=")[1];
-}
-</script>
+<script src = "{% static 'js/lesson.js' %}"></script>
 </body>
 </html>

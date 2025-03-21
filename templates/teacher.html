@@ -18,7 +18,7 @@
         {% for teacher in teachers %}
             <a href="{% url 'date-page' teacher.id %}">
                 <div class="block">
-                    <img src="{% static 'image/profile.jpg' %}" alt="Иконка" class="icon">
+                    <img src="{{ teacher.photo.url }}" alt="Иконка" class="icon">
                     <span>{{ teacher.name }}</span>
                 </div>
             </a>

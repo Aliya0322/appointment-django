@@ -19,7 +19,7 @@
         </div>
         <div class="block">
             <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
-            <a href="{% url 'lesson-page' %}">Запись на пробное занятие</a>
+            <a href="{% url 'lesson-page' %}?{{ request.GET.urlencode }}">Запись на пробное занятие</a>
         </div>
         <div class="block">
             <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
