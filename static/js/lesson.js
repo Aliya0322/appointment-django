@@ -1,3 +1,7 @@
+const url = new URL(window.location.href);
+const telegram_id = atob(url.searchParams.get("student_id"));
+console.log(telegram_id);
+
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".cancel-button").forEach(button => {
         button.addEventListener("click", function() {
