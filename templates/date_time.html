@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lingvo</title>
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock styles %}
+</head>
+<body>
+    <div class="container-date">
+        <div class="container">
+            <button class="back-button" onclick="window.history.back()" aria-label="Назад">&#8592; Назад</button>
+
+            <h1>Дата и время</h1>
+            <h3>{{ current_month|capfirst }}</h3>
+
+            <div class="date-block">
+    {% for date in next_7_days %}
+        <div class="date {% if date.is_active %}active{% else %}inactive{% endif %}
+            {% if date.date in active_dates %}has-time{% endif %}"
+             data-date="{{ date.date|date:'Y-m-d' }}">
+            <span>{{ date.date|date:"D" }}</span>
+            <br>
+            <strong>{{ date.date|date:"d" }}</strong>
+        </div>
+    {% endfor %}
+</div>
+
+
+<!-- Блок с временем -->
+<h3>Время</h3>
+<div class="time-block">
+    {% for slot in open_slots %}
+        <div class="time" data-slot-id="{{ slot.id }}" data-date="{{ slot.date|date:'Y-m-d' }}" data-time="{{ slot.time|date:'H:i' }}">
+            {{ slot.time|date:"H:i" }}
+        </div>
+    {% endfor %}
+</div>
+
+            <!-- Кнопка "Записаться" -->
+            <button id="bookButton" class="button" disabled>Записаться</button>
+        </div>
+    </div>
+<script src = "{% static 'js/date_time.js' %}"></script>
+</body>
+</html>

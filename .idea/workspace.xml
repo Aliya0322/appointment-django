@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="88247d49-240e-430a-87c0-822fa87bcd23" name="Changes" comment="allowed host">
+      <change beforePath="$PROJECT_DIR$/appointment-django/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/migrations/0002_alter_user_options_remove_teacher_id_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/migrations/0003_alter_booking_options_alter_officehour_options_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/school/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/server/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/server/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/server/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/server/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/server/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/static/img/header.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/static/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/static/img/profile.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/static/js/lesson.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/templates/confirmation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/templates/date_time.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/templates/lesson.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/templates/main_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/templates/teacher.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-django/test.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/appointment-django" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2sit4zs0xFWBug5HeXHWGhT8MjU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.Telegram.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/aliyadusembekova/backends/appointment-django"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/appointment-django/static/css" />
+      <recent name="$PROJECT_DIR$/appointment-django/static/img" />
+      <recent name="$PROJECT_DIR$/appointment-django/static" />
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/media" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="88247d49-240e-430a-87c0-822fa87bcd23" name="Changes" comment="" />
+      <created>1738950036212</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738950036212</updated>
+    </task>
+    <task id="LOCAL-00001" summary="allowed host">
+      <option name="closed" value="true" />
+      <created>1742575172232</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742575172232</updated>
+    </task>
+    <task id="LOCAL-00002" summary="allowed host">
+      <option name="closed" value="true" />
+      <created>1742575210100</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742575210100</updated>
+    </task>
+    <task id="LOCAL-00003" summary="allowed host">
+      <option name="closed" value="true" />
+      <created>1742575658223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742575658223</updated>
+    </task>
+    <task id="LOCAL-00004" summary="allowed host">
+      <option name="closed" value="true" />
+      <created>1742802812603</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742802812603</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="allowed host" />
+    <option name="LAST_COMMIT_MESSAGE" value="allowed host" />
+  </component>
+</project>
