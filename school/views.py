@@ -40,7 +40,10 @@ def get(request: HttpRequest, user_id):
 
     for booking in bookings:
         booking_data = {
-            "id" : booking.id
+            "id" : booking.id,
+            "date": booking.open_slot.date,
+            "time": booking.open_slot.time,
+            "name": booking.user.name, #имя педагога
         }
         if booking.open_slot.date < current_date:
             data["past"].append(booking_data)
