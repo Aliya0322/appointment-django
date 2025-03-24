@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, JsonResponse
+from django.utils.timezone import now
 from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.decorators.csrf import csrf_exempt
@@ -9,6 +10,10 @@ from django.utils.decorators import method_decorator
 from datetime import timedelta
 import json
 from babel.dates import format_date
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from sqlalchemy.sql.functions import current_date
+
 from .models import User, Teacher, OpenSlot, Booking
 
 
@@ -20,6 +25,28 @@ class MainPageView(View):
 class LessonPageView(View):
     def get(self, request: HttpRequest):
         return render(request, "lesson.html")
+
+@api_view(["GET"])
+def get(request: HttpRequest, user_id):
+    bookings = Booking.objects.filter(
+        user__telegram_id=user_id
+    ).order_by('-date')
+
+    data = {
+        "past" : [],
+        "future": []
+    }
+    current_date = now()
+
+    for booking in bookings:
+        booking_data = {
+            "id" : booking.id
+        }
+        if booking.open_slot.date < current_date:
+            data["past"].append(booking_data)
+        else:
+            data["future"].append(booking_data)
+    return Response(data)
 
 
 class TeacherListView(ListView):

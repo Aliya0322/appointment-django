@@ -7,22 +7,22 @@
     {% load static %}
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     {% block styles %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock styles %}
 </head>
 <body>
     <div class="container">
-        <img src="{% static 'header.png' %}" alt="Хедер" class="header-image">
+        <img src="{% static 'img/header.png' %}" alt="Хедер" class="header-image">
         <div class="block">
-            <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
+            <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
             <a href="#">О нас</a>
         </div>
         <div class="block">
-            <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
+            <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
             <a href="{% url 'lesson-page' %}?{{ request.GET.urlencode }}">Запись на пробное занятие</a>
         </div>
         <div class="block">
-            <img src="{% static 'logo.png' %}" alt="Иконка" class="logo-image">
+            <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
             <a href="#">Программы обучения</a>
         </div>
     </div>
