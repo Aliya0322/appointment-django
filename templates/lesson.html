@@ -21,18 +21,26 @@
         </div>
         <h1>Запланированное занятие</h1>
 <div class="block" id="future-lessons">
+    {% for lesson in future_lessons %}
     <span class="details">
-        <strong>02 февраля 2025<br>19:30</strong><br>Петр Петров
+        <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
     </span>
-    <button class="cancel-button" data-lesson-id="1">Отменить</button>
+    <button class="cancel-button" data-lesson-id="{{ lesson.id }}">Отменить</button>
     <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
+    {% empty %}
+        <p>У вас нет запланированных занятий.</p>
+    {% endfor %}
 </div>
         <h1>Прошедшее занятие</h1>
         <div class="block" id="past-lessons">
+            {% for lesson in past_lessons %}
             <span class="details">
-                <strong>01 февраля 2025<br>20:00</strong><br>Иван Иванов
+                <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
             </span>
             <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
+            {% empty %}
+               <p>У вас нет прошедших занятий.</p>
+            {% endfor %}
         </div>
     </div>
 <script src = "{% static 'js/lesson.js' %}"></script>

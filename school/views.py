@@ -4,7 +4,6 @@ from django.utils.timezone import now
 from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import login
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from datetime import timedelta
@@ -12,22 +11,23 @@ import json
 from babel.dates import format_date
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from sqlalchemy.sql.functions import current_date
 
 from .models import User, Teacher, OpenSlot, Booking
 
 
 class MainPageView(View):
-    def get(self, request: HttpRequest):
+    @staticmethod
+    def get(request: HttpRequest):
         return render(request, "main_page.html")
 
 
 class LessonPageView(View):
-    def get(self, request: HttpRequest):
+    @staticmethod
+    def get(request: HttpRequest):
         return render(request, "lesson.html")
 
 @api_view(["GET"])
-def get(request: HttpRequest, user_id):
+def get(request:HttpRequest, user_id):
     bookings = Booking.objects.filter(
         user__telegram_id=user_id
     ).order_by('-date')
@@ -119,32 +119,30 @@ class BookSlotView(View):
     @staticmethod
     def post(request):
         slot_id = request.POST.get("slot_id")
+        user_id = request.POST.get("user_id")
 
-        if not slot_id:
-            return JsonResponse({"error": "Не указан слот"}, status=400)
+        if not slot_id or not user_id:
+            return JsonResponse({"error": "Не указан слот или пользователь"}, status=400)
 
-        return JsonResponse({"message": "Запись успешно создана!"})
+        try:
+            slot = OpenSlot.objects.get(id=slot_id)
+        except OpenSlot.DoesNotExist:
+            return JsonResponse({"error": "Слот не найден"}, status=404)
+
+        user = User.objects.get(id=user_id)
+
+        booking = Booking.objects.create(
+            user=user,
+            open_slot=slot,
+            status="confirmed",
+        )
+
+        return JsonResponse({"message": "Запись успешно создана!",  "booking_id": booking.id})
+
 
     @staticmethod
-    def get(request):
+    def get(self, request):
         return JsonResponse({"error": "Некорректный запрос"}, status=400)
-
-@csrf_exempt
-def telegram_auth(request):
-    telegram_id = request.GET.get("id")
-    first_name = request.GET.get("first_name", " ")
-
-    if not telegram_id:
-        return JsonResponse({"error": "Нет данных от Telegram"}, status=400)
-
-    user, created = User.objects.get_or_create(
-        telegram_id=telegram_id,
-        defaults={"name": first_name, "role": "student"}
-    )
-
-    login(request, user)
-
-    return JsonResponse({"message": "Успешный вход!", "created": created})
 
 
 @csrf_exempt
