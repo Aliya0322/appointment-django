@@ -5,9 +5,9 @@ from school.models import User, Teacher, OpenSlot, OfficeHour, Booking
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("name", "phone", "telegram_id", "role")
+    list_display = ('last_name', 'first_name', 'middle_name', 'phone', 'telegram_id', 'role')
     list_filter = ("role",)
-    search_fields = ("name", "phone", "telegram_id")
+    search_fields = ('last_name', "phone", "telegram_id")
     list_display_labels = {
         "name": "Имя",
         "phone": "Телефон",
@@ -23,7 +23,7 @@ class TeacherAdmin(admin.ModelAdmin):
         "user": "Пользователь",
         "zoom_url": "Ссылка на Zoom",
     }
-    search_fields = ("user__name",)
+    search_fields = ("user__last_name",)
 
 @admin.register(OpenSlot)
 class OpenSlotAdmin(admin.ModelAdmin):

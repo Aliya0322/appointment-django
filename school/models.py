@@ -2,63 +2,78 @@ from django.db import models
 
 
 class UserManager(models.Manager):
-    def create_user(self, telegram_id, name="Без имени", role="student", phone=None):
+    def create_user(self, telegram_id, first_name="Без имени", last_name="", role="student", phone=None):
         if not telegram_id:
             raise ValueError("Пользователь должен иметь Telegram ID")
-        user = self.model(telegram_id=telegram_id, name=name, role=role, phone=phone)
+        user = self.model(
+            telegram_id=telegram_id,
+            first_name=first_name,
+            last_name=last_name,
+            role=role,
+            phone=phone
+        )
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, telegram_id, name, role="admin", phone=None):
-        user = self.create_user(telegram_id, name, role, phone)
+    def create_superuser(self, telegram_id, first_name, last_name="", phone=None):
+        user = self.create_user(telegram_id, first_name, last_name, role="admin", phone=phone)
         user.is_admin = True
+        user.is_superuser = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
 
+    def get_students(self):
+        return self.get_queryset().filter(role="student")
 
-def get_students(self):
-    return self.get_queryset().filter(role='student')
-
-
-def get_teachers(self):
-    return self.get_queryset().filter(role='teacher')
+    def get_teachers(self):
+        return self.get_queryset().filter(role="teacher")
 
 
 class User(models.Model):
     ROLE_CHOICES = [
-        ('student', 'Student'),
-        ('teacher', 'Teacher'),
+        ("student", "Student"),
+        ("teacher", "Teacher"),
     ]
-    name = models.CharField(max_length=255, verbose_name="Имя")
-    phone = models.CharField(max_length=20, unique=True, verbose_name="Номер телефона")
-    telegram_id = models.IntegerField(verbose_name="Телеграм ID")
+    first_name = models.CharField(max_length=255, verbose_name="Имя", blank=True, null=True)
+    last_name = models.CharField(max_length=255, verbose_name="Фамилия", blank=True, null=True)
+    middle_name = models.CharField(max_length=255, verbose_name="Отчество", blank=True, null=True)
+    phone = models.CharField(max_length=20, unique=True, verbose_name="Номер телефона", blank=True, null=True)
+    telegram_id = models.IntegerField(verbose_name="Телеграм ID", unique=True)
     role = models.CharField(max_length=7, choices=ROLE_CHOICES, verbose_name="Роль")
+
+    is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        if self.role == 'teacher' and not Teacher.objects.filter(user=self).exists():
-            Teacher.objects.create(user=self)
+        if self.role == "teacher":
+            Teacher.objects.get_or_create(user=self)
+        else:
+            Teacher.objects.filter(user=self).delete()
 
     def __str__(self):
-        return self.name
+        return f"{self.last_name} {self.first_name} {self.middle_name or ''}".strip()
 
     class Meta:
         db_table = "user"
-        indexes = [models.Index(fields=['name'])]
+        indexes = [models.Index(fields=["last_name"])]
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
 
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, verbose_name="Пользователь")
-    zoom_url = models.URLField(max_length=200, verbose_name="Ссылка на Zoom")
+    zoom_url = models.URLField(max_length=200, verbose_name="Ссылка на Zoom", blank=True, null=True)
+    photo = models.ImageField(upload_to="teachers_photos/", blank=True, null=True)
 
     objects = models.Manager()
 
     def __str__(self):
-        return f'Teacher: {self.user.name}'
+        return f"{self.user.last_name} {self.user.first_name} {self.user.middle_name or ''}".strip()
 
     class Meta:
         verbose_name = "Преподаватель"
@@ -73,7 +88,7 @@ class OpenSlot(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        return f'{self.date} {self.time} - {self.teacher.user.name}'
+        return f"{self.date} {self.time} - {self.teacher.user.last_name} {self.teacher.user.first_name}".strip()
 
     class Meta:
         verbose_name = "Открытый слот"
@@ -87,7 +102,7 @@ class OfficeHour(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        return f'OfficeHour: {self.open_slot} with {self.user.name}'
+        return f"OfficeHour: {self.open_slot} with {self.user.last_name} {self.user.first_name}".strip()
 
     class Meta:
         verbose_name = "Часы приема"
@@ -107,8 +122,9 @@ class Booking(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        return f'Booking: {self.user.name} - {self.open_slot} ({self.status})'
+        return f"Booking: {self.user.last_name} {self.user.first_name} - {self.open_slot} ({self.status})".strip()
 
     class Meta:
         verbose_name = "Бронирование"
         verbose_name_plural = "Бронирования"
+

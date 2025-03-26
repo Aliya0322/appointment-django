@@ -19,7 +19,7 @@
             <a href="{% url 'date-page' teacher.id %}">
                 <div class="block">
                     <img src="{{ teacher.photo.url }}" alt="Иконка" class="icon">
-                    <span>{{ teacher.name }}</span>
+                    <span>{{ teacher.last_name }} <br> {{ teacher.first_name }} {{ teacher.middle_name }}</span>
                 </div>
             </a>
         {% endfor %}
