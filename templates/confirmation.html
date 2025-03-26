@@ -16,8 +16,8 @@
         <h1>Проверка записи</h1>
         <div class="block" id="teacherBlock">
             <div class="teacher-option">
-                <img src="{% static 'image/profile.jpg' %}" alt="Иконка" class="icon">
-                <span>{{ teacher }}</span>
+                <img src="{{ teacher.photo.url }}" alt="Иконка" class="icon">
+                <span>{{ teacher.last_name }} <br> {{ teacher.first_name }} {{ teacher.middle_name }}</span>
             </div>
         </div>
 
@@ -46,43 +46,9 @@
                 </select>
             </form>
         </div>
-
-        <!-- Кнопка подтверждения -->
         <button type="button" class="button" id="confirmButton">Подтвердить</button>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Оставляем только обработчик для подтверждения
-            document.getElementById('confirmButton').addEventListener('click', function() {
-                var program = document.getElementById('program').value;
-                var level = document.getElementById('level').value;
-
-                // Отправка данных на сервер
-                fetch('{% url 'book_slot' %}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': '{{ csrf_token }}'
-                    },
-                    body: JSON.stringify({
-                        teacher_id: "{{ teacher.id }}",  // Мы передаем ID преподавателя в запрос
-                        slot_id: "{{ slot.id }}",  // Мы передаем ID слота в запрос
-                        program: program,
-                        level: level
-                    })
-                }).then(response => response.json())
-                  .then(data => {
-                      if (data.success) {
-                          alert('Бронирование успешно завершено!');
-                          window.location.href = '{% url 'main-page' %}';
-                      } else {
-                          alert('Ошибка при бронировании.');
-                      }
-                  });
-            });
-        });
-    </script>
+<script src = "{% static 'js/confirmation.js' %}"></script>
 </body>
 </html>
 

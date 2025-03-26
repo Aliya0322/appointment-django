@@ -101,9 +101,9 @@ class DatePageView(DetailView):
 def confirmation_page(request):
     slot_id = request.GET.get('slot_id')
     slot = get_object_or_404(OpenSlot, id=slot_id)
-    teacher = slot.teacher  # Предполагаем, что есть связь с преподавателем
-    selected_date = slot.date  # Дата занятия
-    selected_time = slot.time.strftime('%H:%M')  # Время занятия
+    teacher = slot.teacher
+    selected_date = slot.date
+    selected_time = slot.time.strftime('%H:%M')
 
     context = {
         'teacher': teacher,
