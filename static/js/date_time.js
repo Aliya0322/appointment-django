@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.classList.add("selected");
 
             selectedDate = this.dataset.date;
-            console.log("Выбрана дата:", selectedDate); // Лог для проверки
+            console.log("Выбрана дата:", selectedDate);
             updateAvailableTimes(selectedDate);
         });
     });
@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let found = false;
         document.querySelectorAll(".time").forEach(timeElem => {
             if (timeElem.dataset.date === selectedDate) {
-                timeElem.style.display = "block"; // Показываем время
+                timeElem.style.display = "block";
                 found = true;
             } else {
-                timeElem.style.display = "none"; // Скрываем время для других дат
+                timeElem.style.display = "none";
             }
         });
 

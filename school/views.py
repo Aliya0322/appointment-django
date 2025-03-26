@@ -105,9 +105,12 @@ def confirmation_page(request):
     selected_date = slot.date
     selected_time = slot.time.strftime('%H:%M')
 
+    slots = OpenSlot.objects.all()
+
     context = {
         'teacher': teacher,
         'slot': slot,
+        'slots': slots,
         'selected_date': selected_date,
         'selected_time': selected_time,
     }
