@@ -2,7 +2,7 @@ from django.db import models
 
 
 class UserManager(models.Manager):
-    def create_user(self, telegram_id, first_name="Без имени", last_name="", role="student", phone=None):
+    def create_user(self, telegram_id, first_name="Без имени", last_name="", role="student"):
         if not telegram_id:
             raise ValueError("Пользователь должен иметь Telegram ID")
         user = self.model(
@@ -10,13 +10,12 @@ class UserManager(models.Manager):
             first_name=first_name,
             last_name=last_name,
             role=role,
-            phone=phone
         )
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, telegram_id, first_name, last_name="", phone=None):
-        user = self.create_user(telegram_id, first_name, last_name, role="admin", phone=phone)
+    def create_superuser(self, telegram_id, first_name, last_name=""):
+        user = self.create_user(telegram_id, first_name, last_name, role="admin")
         user.is_admin = True
         user.is_superuser = True
         user.is_staff = True
@@ -38,7 +37,6 @@ class User(models.Model):
     first_name = models.CharField(max_length=255, verbose_name="Имя", blank=True, null=True)
     last_name = models.CharField(max_length=255, verbose_name="Фамилия", blank=True, null=True)
     middle_name = models.CharField(max_length=255, verbose_name="Отчество", blank=True, null=True)
-    phone = models.CharField(max_length=20, unique=True, verbose_name="Номер телефона", blank=True, null=True)
     telegram_id = models.IntegerField(verbose_name="Телеграм ID", unique=True)
     role = models.CharField(max_length=7, choices=ROLE_CHOICES, verbose_name="Роль")
 

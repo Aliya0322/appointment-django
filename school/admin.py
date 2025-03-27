@@ -5,12 +5,11 @@ from school.models import User, Teacher, OpenSlot, OfficeHour, Booking
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('last_name', 'first_name', 'middle_name', 'phone', 'telegram_id', 'role')
+    list_display = ('last_name', 'first_name', 'middle_name', 'telegram_id', 'role')
     list_filter = ("role",)
-    search_fields = ('last_name', "phone", "telegram_id")
+    search_fields = ('last_name', "telegram_id")
     list_display_labels = {
         "name": "Имя",
-        "phone": "Телефон",
         "telegram_id": "Telegram ID",
         "role": "Роль",
     }
