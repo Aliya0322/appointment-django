@@ -15,10 +15,8 @@ class UserManager(models.Manager):
         return user
 
     def create_superuser(self, telegram_id, first_name, last_name=""):
-        user = self.create_user(telegram_id, first_name, last_name, role="admin")
-        user.is_admin = True
+        user = self.create_user(telegram_id, first_name, last_name)
         user.is_superuser = True
-        user.is_staff = True
         user.save(using=self._db)
         return user
 
@@ -39,10 +37,6 @@ class User(models.Model):
     middle_name = models.CharField(max_length=255, verbose_name="Отчество", blank=True, null=True)
     telegram_id = models.IntegerField(verbose_name="Телеграм ID", unique=True)
     role = models.CharField(max_length=7, choices=ROLE_CHOICES, verbose_name="Роль")
-
-    is_admin = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
 
