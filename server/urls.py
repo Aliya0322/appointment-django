@@ -15,11 +15,11 @@ from school.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MainPageView.as_view(), name='main-page'),
-    path('lesson/', LessonPageView.as_view(), name="lesson-page"),
-    path('teacher/', TeacherListView.as_view(), name="teacher-page"),
-    path('date/<int:pk>/', DatePageView.as_view(), name="date-page"),
-    path('confirmation/', confirmation_page, name='confirmation-page'),
+    path('', MainPageView.as_view(), name='main_page'),
+    path('lesson/', LessonPageView.as_view(), name="lesson_page"),
+    path('teacher/', TeacherListView.as_view(), name="teacher_page"),
+    path('date/<int:pk>/', DatePageView.as_view(), name="date_page"),
+    path('confirmation/', confirmation_page, name='confirmation_page'),
     path("book/", BookSlotView.as_view() , name = "book_slot")
 ]
 

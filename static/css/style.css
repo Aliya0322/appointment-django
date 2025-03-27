@@ -10,24 +10,12 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 400px;
+    width: 300px;
+    height: 400px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-.block span {
-    font-size: 16px;
-    color: #333;
 }
 
 h1 {
@@ -39,13 +27,25 @@ h1 {
 .block {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    margin-bottom: 15px;
     background-color: #f9f9f9;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+}
+
+.block span {
+    font-size: 16px;
+    color: #333;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 15px;
 }
 
 a {
@@ -56,7 +56,7 @@ a {
 .block img.logo-image {
     width: 40px;
     height: 40px;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 .header-image {
@@ -67,44 +67,65 @@ a {
     margin-bottom: 20px;
 }
 
+/* Кнопки */
+button, .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ffcc99;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .button:hover {
+    background-color: #ffb366;
+}
+
 .back-button {
     background-color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 16px;
+    cursor: pointer;
     margin-bottom: 20px;
 }
 
-/* Стили для блока с прошедшими и будущими занятиями */
+/* Прошедшие и будущие занятия */
 .block#past-lessons, .block#future-lessons {
     justify-content: space-between;
 }
 
-.block#past-lessons .details, .block#future-lessons .details {
+.block#past-lessons .details,
+.block#future-lessons .details {
     text-align: left;
 }
 
-.block#past-lessons .icon, .block#future-lessons .icon {
+.block#past-lessons .icon,
+.block#future-lessons .icon {
     margin-left: 10px;
 }
 
-.block#past-lessons img.icon, .block#future-lessons img.icon {
+.block#past-lessons img.icon,
+.block#future-lessons img.icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
 }
 
-
-/* Стили для блока с преподавателями */
+/* Преподаватели */
 .block#teacher img.icon {
     width: 100px;
     height: 100px;
     border-radius: 50%;
 }
 
-/* Стили для выбора даты и времени */
-
+/* Выбор даты и времени */
 .date-block, .time-block {
     display: flex;
     flex-wrap: wrap;
@@ -130,55 +151,34 @@ a {
     border-color: #ffcc99;
 }
 
-.button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #ffcc99;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #333;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #ffb366;
-}
-
-/* Для активных дат с временем */
+/* Активные и неактивные даты */
 .date.has-time {
     font-weight: bold;
-    color: #333; /* Яркий цвет, например темный */
-    cursor: pointer; /* Сделаем их кликабельными */
+    color: #333;
+    cursor: pointer;
 }
 
-/* Для дат без времени */
 .date.inactive {
-    color: #aaa; /* Тусклый цвет */
-    cursor: not-allowed; /* Делаем их некликабельными */
+    color: #aaa;
+    cursor: not-allowed;
 }
 
 .date.inactive:hover {
-    background-color: transparent; /* Убираем эффект наведения для неактивных дат */
+    background-color: transparent;
 }
 
-/* Стили для формы дополнительных данных */
+/* Форма дополнительных данных */
 #additionalDataForm {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Стили для label */
 #additionalDataForm label {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-/* Выпадающие списки (select) */
 #additionalDataForm select {
     width: 100%;
     padding: 10px;
@@ -189,7 +189,9 @@ a {
     cursor: pointer;
 }
 
-timeBlock-confirm {
-border: none;
-padding: 10px;
+
+#timeBlock-confirm {
+    border: none;
+    padding: 10px;
 }
+

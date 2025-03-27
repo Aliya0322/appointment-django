@@ -16,7 +16,7 @@
 
         <h1>Преподаватели</h1>
         {% for teacher in teachers %}
-            <a href="{% url 'date-page' teacher.id %}">
+            <a href="{% url 'date_page' teacher.id %}">
                 <div class="block">
                     <img src="{{ teacher.photo.url }}" alt="Иконка" class="icon">
                     <span>{{ teacher.last_name }} <br> {{ teacher.first_name }} {{ teacher.middle_name }}</span>

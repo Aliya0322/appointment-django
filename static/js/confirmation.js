@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
           .then(data => {
               if (data.success) {
                   alert('Бронирование успешно завершено!');
-                  window.location.href = '{% url 'main-page' %}';
+                  window.location.href = '{% url 'main_page' %}';
               } else {
                   alert('Ошибка при бронировании.');
               }
