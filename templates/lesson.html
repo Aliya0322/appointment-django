@@ -20,8 +20,10 @@
             <a href="{% url 'teacher_page' %}">Выбрать преподавателя</a>
         </div>
         <div class="block-lesson">
-            <h1>Запланированное занятие</h1>
-<div class="block-lesson" id="future-lessons">
+
+        </div>
+        <h1>Запланированное занятие</h1>
+<div class="block" id="future-lessons">
     {% for lesson in future_lessons %}
     <span class="details">
         <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
@@ -33,7 +35,7 @@
     {% endfor %}
 </div>
         <h1>Прошедшее занятие</h1>
-        <div class="block-lesson" id="past-lessons">
+        <div class="block" id="past-lessons">
             {% for lesson in past_lessons %}
             <span class="details">
                 <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
@@ -42,7 +44,6 @@
             {% empty %}
                <p>У вас нет прошедших занятий.</p>
             {% endfor %}
-        </div>
         </div>
     </div>
 <script src = "{% static 'js/lesson.js' %}"></script>

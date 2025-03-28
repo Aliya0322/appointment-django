@@ -82,19 +82,19 @@ a {
 }
 
 /* Стили для блока с прошедшими и будущими занятиями */
-.block-lesson#past-lessons, .block-lesson#future-lessons {
+.block#past-lessons, .block#future-lessons {
     justify-content: space-between;
 }
 
-.block-lesson#past-lessons .details, .block-lesson#future-lessons .details {
+.block#past-lessons .details, .block#future-lessons .details {
     text-align: left;
 }
 
-.block-lesson#past-lessons .icon, .block-lesson#future-lessons .icon {
+.block#past-lessons .icon, .block#future-lessons .icon {
     margin-left: 10px;
 }
 
-.block-lesson#past-lessons img.icon, .block-lesson#future-lessons img.icon {
+.block#past-lessons img.icon, .block#future-lessons img.icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
