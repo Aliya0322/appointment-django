@@ -135,7 +135,7 @@ a {
     border-color: #ffcc99;
 }
 
-.bookButton {
+#bookButton {
     display: block;
     width: 100%;
     padding: 10px;
@@ -149,7 +149,7 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.bookButton:hover {
+#bookButton:hover {
     background-color: #ffb366;
 }
 

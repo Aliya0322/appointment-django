@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Обработчик кнопки "Записаться"
     bookButton.addEventListener("click", function () {
-        let baseUrl = this.dataset.url; // Получаем URL из data-url
+        let baseUrl = this.dataset.url;
         if (selectedSlotId) {
             window.location.href = `${baseUrl}?slot_id=${selectedSlotId}`;
         } else {
