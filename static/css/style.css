@@ -10,6 +10,7 @@ body {
 }
 
 .container {
+    weight 20rem;
     height: 30rem;
     background-color: #ffffff;
     padding: 20px;
