@@ -187,18 +187,17 @@ a {
 /* Для активных дат с временем */
 .date.has-time {
     font-weight: bold;
-    color: #333; /* Яркий цвет, например темный */
-    cursor: pointer; /* Сделаем их кликабельными */
-}
+    color: #333;
+    cursor: pointer;
 
 /* Для дат без времени */
 .date.inactive {
-    color: #aaa; /* Тусклый цвет */
-    cursor: not-allowed; /* Делаем их некликабельными */
+    color: #aaa;
+    cursor: not-allowed;
 }
 
 .date.inactive:hover {
-    background-color: transparent; /* Убираем эффект наведения для неактивных дат */
+    background-color: transparent;
 }
 
 /* Стили для формы дополнительных данных */
@@ -211,7 +210,7 @@ a {
 /* Стили для label */
 #additionalDataForm label {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 400;
     display: block;
     margin-bottom: 5px;
 }
