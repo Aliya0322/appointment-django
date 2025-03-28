@@ -100,6 +100,11 @@ a {
     border-radius: 50%;
 }
 
+#future-lessons p:only-child,
+#past-lessons p:only-child {
+    color: #ccc;
+    opacity: 0.8;
+}
 
 /* Стили для блока с преподавателями */
 .block#teacher img.icon {
