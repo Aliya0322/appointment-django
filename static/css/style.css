@@ -103,7 +103,6 @@ a {
 #future-lessons p:only-child,
 #past-lessons p:only-child {
     color: #ccc;
-    opacity: 0.9;
 }
 
 /* Стили для блока с преподавателями */
