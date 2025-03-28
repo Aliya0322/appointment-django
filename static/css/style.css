@@ -36,6 +36,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+h3 {
+    font-size: 10px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
 .block {
     display: flex;
     align-items: center;
