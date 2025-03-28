@@ -1,29 +1,30 @@
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('confirmButton').addEventListener('click', function() {
-        var program = document.getElementById('program').value;
-        var level = document.getElementById('level').value;
-        var url = this.dataset.url;
+document.getElementById('bookingForm').onsubmit = function(e) {
+    e.preventDefault();
 
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-            body: JSON.stringify({
-                teacher_id: "{{ teacher.id }}",
-                slot_id: "{{ slot.id }}",
-                program: program,
-                level: level
-            })
-        }).then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  alert('Бронирование успешно завершено!');
-                  window.location.href = '{% url 'main_page' %}';
-              } else {
-                  alert('Ошибка при бронировании.');
-              }
-          });
+    let slotId = document.querySelector('input[name="slot_id"]').value;
+    let userId = document.querySelector('input[name="user_id"]').value;
+
+    fetch('/book_slot/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name="csrfmiddlewaretoken"]').value
+        },
+        body: JSON.stringify({
+            slot_id: slotId,
+            user_id: userId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+        } else {
+            alert(data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ошибка при создании записи');
     });
-});
+};
