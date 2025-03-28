@@ -16,6 +16,13 @@ body {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 .icon {
@@ -203,7 +210,10 @@ a {
 
 /* Стили для label */
 #additionalDataForm label {
+    font-size: 16px;
     font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
 }
 
 /* Выпадающие списки (select) */
