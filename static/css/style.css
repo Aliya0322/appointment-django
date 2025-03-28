@@ -19,8 +19,8 @@ body {
 }
 
 .icon {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin-right: 15px;
 }
@@ -31,7 +31,7 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 18px;
     color: #333;
     margin-bottom: 20px;
 }
