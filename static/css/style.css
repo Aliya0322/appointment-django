@@ -82,19 +82,19 @@ a {
 }
 
 /* Стили для блока с прошедшими и будущими занятиями */
-.block#past-lessons, .block#future-lessons {
+.block-lesson#past-lessons, .block-lesson#future-lessons {
     justify-content: space-between;
 }
 
-.block#past-lessons .details, .block#future-lessons .details {
+.block-lesson#past-lessons .details, .block-lesson#future-lessons .details {
     text-align: left;
 }
 
-.block#past-lessons .icon, .block#future-lessons .icon {
+.block-lesson#past-lessons .icon, .block-lesson#future-lessons .icon {
     margin-left: 10px;
 }
 
-.block#past-lessons img.icon, .block#future-lessons img.icon {
+.block-lesson#past-lessons img.icon, .block-lesson#future-lessons img.icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -103,7 +103,7 @@ a {
 #future-lessons p:only-child,
 #past-lessons p:only-child {
     color: #ccc;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* Стили для блока с преподавателями */
