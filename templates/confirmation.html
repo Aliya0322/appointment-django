@@ -15,7 +15,7 @@
 
         <h1>Проверка записи</h1>
         <div class="block" id="teacherBlock">
-                <img src="{{ teacher.photo.url|default:'/static/img/default.png' }}" alt="Иконка" class="icon">
+                <img src="{% if teacher.photo %}{{ teacher.photo.url }}{% else %}/static/img/default.png{% endif %}" alt="Иконка" class="icon">
                  <span>{{ teacher.user.last_name }} <br> {{ teacher.user.first_name }} {{ teacher.user.middle_name }}</span>
         </div>
 
