@@ -45,7 +45,6 @@ h3 {
 .block {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
     padding: 15px;
@@ -205,7 +204,6 @@ a {
 /* Стили для label */
 #additionalDataForm label {
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
 /* Выпадающие списки (select) */
@@ -214,7 +212,7 @@ a {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     background-color: white;
     cursor: pointer;
 }
