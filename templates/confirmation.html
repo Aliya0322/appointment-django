@@ -43,12 +43,7 @@
                 </select>
             </form>
         </div>
-       <form id="bookingForm" method="post" action="{% url 'book_slot' %}">
-    {% csrf_token %}
-    <input type="hidden" name="slot_id" value="{{ slot.id }}">
-    <input type="hidden" name="user_id" value="{{ user.id }}">
-    <button type="submit" class="button" id="bookButton">Подтвердить</button>
-</form>
+        <button type="button" class="button" id="bookButton">Подтвердить</button>
     </div>
 <script src = "{% static 'js/confirmation.js' %}"></script>
 </body>
