@@ -106,18 +106,13 @@ a {
 }
 
 .lesson-section {
-    background-color: #e0e0e0;
-    padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .lesson-section h1 {
+    font-size: 1rem;
     margin-top: 0;
-    padding: 10px;
-    background-color: #d6d6d6;
-    border-radius: 10px;
-    text-align: center;
 }
 
 .lesson-block {
