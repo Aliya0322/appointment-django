@@ -14,12 +14,6 @@ class UserManager(models.Manager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, telegram_id, first_name, last_name=""):
-        user = self.create_user(telegram_id, first_name, last_name)
-        user.is_superuser = True
-        user.save(using=self._db)
-        return user
-
     def get_students(self):
         return self.get_queryset().filter(role="student")
 
