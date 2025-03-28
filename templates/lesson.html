@@ -19,33 +19,41 @@
             <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
             <a href="{% url 'teacher_page' %}">Выбрать преподавателя</a>
         </div>
-        <div class="block-lesson">
 
+        <div class="lesson-section" id="future-lessons">
+            <h1>Запланированное занятие</h1>
+            <div class="lesson-block">
+                {% for lesson in future_lessons %}
+                <div class="block-content">
+                    <span class="details">
+                        <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
+                    </span>
+                    <button class="cancel-button" data-lesson-id="{{ lesson.id }}">Отменить</button>
+                    <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
+                </div>
+                {% empty %}
+                    <p>У вас нет запланированных занятий.</p>
+                {% endfor %}
+            </div>
         </div>
-        <h1>Запланированное занятие</h1>
-<div class="block" id="future-lessons">
-    {% for lesson in future_lessons %}
-    <span class="details">
-        <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
-    </span>
-    <button class="cancel-button" data-lesson-id="{{ lesson.id }}">Отменить</button>
-    <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
-    {% empty %}
-        <p>У вас нет запланированных занятий.</p>
-    {% endfor %}
-</div>
-        <h1>Прошедшее занятие</h1>
-        <div class="block" id="past-lessons">
-            {% for lesson in past_lessons %}
-            <span class="details">
-                <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
-            </span>
-            <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
-            {% empty %}
-               <p>У вас нет прошедших занятий.</p>
-            {% endfor %}
+
+        <div class="lesson-section" id="past-lessons">
+            <h1>Прошедшее занятие</h1>
+            <div class="lesson-block">
+                {% for lesson in past_lessons %}
+                <div class="block-content">
+                    <span class="details">
+                        <strong>{{ lesson.date|date:"d F Y" }}<br>{{ lesson.time }}</strong><br>{{ lesson.name }}
+                    </span>
+                    <img src="{% static 'img/profile.jpeg' %}" alt="Иконка" class="icon">
+                </div>
+                {% empty %}
+                    <p>У вас нет прошедших занятий.</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
-<script src = "{% static 'js/lesson.js' %}"></script>
+
+    <script src = "{% static 'js/lesson.js' %}"></script>
 </body>
 </html>

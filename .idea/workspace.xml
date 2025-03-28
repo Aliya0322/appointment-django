@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88247d49-240e-430a-87c0-822fa87bcd23" name="Changes" comment="allowed host" />
+    <list default="true" id="88247d49-240e-430a-87c0-822fa87bcd23" name="Changes" comment="allowed host">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lesson.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lesson.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -312,7 +315,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743151091210</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="allowed host">
+      <option name="closed" value="true" />
+      <created>1743151326710</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1743151326710</updated>
+    </task>
+    <task id="LOCAL-00031" summary="allowed host">
+      <option name="closed" value="true" />
+      <created>1743151451610</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1743151451610</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
