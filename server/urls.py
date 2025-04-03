@@ -10,7 +10,7 @@ from school.views import (
     TeacherListView,
     DatePageView,
     BookSlotView,
-    confirmation_page
+    confirmation_page, lesson_history
 )
 
 urlpatterns = [
@@ -20,7 +20,8 @@ urlpatterns = [
     path('teacher/', TeacherListView.as_view(), name="teacher_page"),
     path('date/<int:pk>/', DatePageView.as_view(), name="date_page"),
     path('confirmation/', confirmation_page, name='confirmation_page'),
-    path("book/", BookSlotView.as_view() , name = "book_slot")
+    path("book/", BookSlotView.as_view() , name = "book_slot"),
+    path("lesson/history/<int:user_id>", lesson_history, name="lesson_history")
 ]
 
 

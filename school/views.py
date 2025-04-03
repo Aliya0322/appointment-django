@@ -27,10 +27,10 @@ class LessonPageView(View):
         return render(request, "lesson.html")
 
 @api_view(["GET"])
-def get(request:HttpRequest, user_id):
+def lesson_history(request:HttpRequest, user_id):
     bookings = Booking.objects.filter(
         user__telegram_id=user_id
-    ).order_by('-date')
+    ).order_by('-open_slot__date')
 
     data = {
         "past" : [],
@@ -43,9 +43,9 @@ def get(request:HttpRequest, user_id):
             "id" : booking.id,
             "date": booking.open_slot.date,
             "time": booking.open_slot.time,
-            "name": booking.user.name, #имя педагога
+            "name": booking.user.last_name + booking.user.first_name  +  booking.user.middle_name, #имя педагога
         }
-        if booking.open_slot.date < current_date:
+        if booking.open_slot.date < current_date.date():
             data["past"].append(booking_data)
         else:
             data["future"].append(booking_data)
@@ -58,7 +58,7 @@ class TeacherListView(ListView):
     context_object_name = 'teachers'
 
     def get_queryset(self):
-        return User.objects.filter(role='teacher').select_related('teacher')
+        return Teacher.objects.select_related('user')
 
 
 class DatePageView(DetailView):
