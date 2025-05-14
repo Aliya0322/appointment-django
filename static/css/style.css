@@ -49,6 +49,13 @@ h3 {
     margin-bottom: 20px;
 }
 
+.clickable-block {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
 .block {
     display: flex;
     align-items: center;

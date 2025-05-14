@@ -13,19 +13,28 @@
 <body>
     <div class="container">
         <img src="{% static 'img/header.png' %}" alt="Хедер" class="header-image">
-        <div class="block">
-            <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
-            <a href="https://mylingvoacademy.ru/">О нас</a>
-        </div>
-        <div class="block">
-            <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
-            <a href="{% url 'lesson_page' %}?{{ request.GET.urlencode }}">Запись на пробное занятие</a>
-        </div>
-        <div class="block">
-            <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
-            <a href="https://mylingvoacademy.ru/programs">Программы обучения</a>
-        </div>
+
+        <a href="https://mylingvoacademy.ru/" class="clickable-block">
+            <div class="block">
+                <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
+                <span>О нас</span>
+            </div>
+        </a>
+
+        <a href="{% url 'lesson_page' %}?{{ request.GET.urlencode }}" class="clickable-block">
+            <div class="block">
+                <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
+                <span>Запись на пробное занятие</span>
+            </div>
+        </a>
+
+        <a href="https://mylingvoacademy.ru/programs" class="clickable-block">
+            <div class="block">
+                <img src="{% static 'img/logo.png' %}" alt="Иконка" class="logo-image">
+                <span>Программы обучения</span>
+            </div>
+        </a>
     </div>
-<script src = "{% static 'js/main_page.js' %}"></script>
+    <script src="{% static 'js/main_page.js' %}"></script>
 </body>
 </html>
