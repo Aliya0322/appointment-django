@@ -13,6 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Проверяем, есть ли даты на странице
     if (dateElements.length > 0) {
+        // 🔶 Подсвечиваем даты, у которых есть доступное время
+        dateElements.forEach(dateElem => {
+            const currentDate = dateElem.dataset.date;
+            const hasTime = Array.from(timeElements).some(
+                timeElem => timeElem.dataset.date === currentDate
+            );
+            if (hasTime) {
+                dateElem.classList.add("has-time");
+            }
+        });
+
+        // 🟠 Устанавливаем обработчики кликов по датам
         dateElements.forEach(dateElem => {
             dateElem.addEventListener("click", function () {
                 dateElements.forEach(el => el.classList.remove("selected"));
@@ -23,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 updateAvailableTimes(selectedDate);
 
-                // Сбрасываем выбор времени при смене даты
+                // Сброс выбора времени при смене даты
                 selectedSlotId = null;
                 bookButton.disabled = true;
             });
@@ -53,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Проверяем, есть ли время на странице
+    // Устанавливаем обработчики кликов по времени
     if (timeElements.length > 0) {
         timeElements.forEach(timeElem => {
             timeElem.addEventListener("click", function () {
@@ -78,3 +90,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+

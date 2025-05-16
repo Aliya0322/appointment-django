@@ -15,8 +15,12 @@
 
         <h1>Проверка записи</h1>
         <div class="block" id="teacherBlock">
-                <img src="{{ teacher.photo.url }}" alt="Иконка" class="icon">
-                 <span>{{ teacher.user.last_name }} <br> {{ teacher.user.first_name }} {{ teacher.user.middle_name }}</span>
+               {% if teacher.photo %}
+                        <img src="{{ teacher.photo.url }}" alt="Иконка" class="icon">
+                    {% else %}
+                        <img src="{% static 'img/default.png' %}" alt="Иконка" class="icon">
+                    {% endif %}
+                <span>{{ teacher.user.last_name }} <br> {{ teacher.user.first_name }} {{ teacher.user.middle_name }}</span>
         </div>
 
 
@@ -27,22 +31,32 @@
             </div>
         </div>
         <!-- Блок с дополнительными данными (категория и уровень) -->
-        <div class="block" id="additionalDataBlock">
+        <h3>Выбор программы обучения</h3>
+           <div class="form-section" id="additionalDataBlock">
             <form id="additionalDataForm">
-                <label for="program">Выберите категорию:</label>
-                <select id="program" name="program">
-                    <option value="children">Английский язык для детей 7-11 лет</option>
-                    <option value="teens">Английский язык для подростков 12-18 лет</option>
-                    <option value="adults">Английский язык для взрослых от 18 лет</option>
-                </select>
-                <label for="level">Уровень владения языком:</label>
-                <select id="level" name="level">
-                    <option value="beginner">Начальный</option>
-                    <option value="intermediate">Средний</option>
-                    <option value="advanced">Продвинутый</option>
-                </select>
+                {% csrf_token %}
+                <input type="hidden" name="slot_id" value="{{ open_slot.id }}">
+                <input type="hidden" name="user_id" value="{{ request.user.id }}">
+                <div class="form-group">
+                    <label for="program" class="form-label">Категория:</label>
+                    <select id="program" name="program" class="form-select">
+                        <option value="children">Английский язык для детей 7-11 лет</option>
+                        <option value="teens">Английский язык для подростков 12-18 лет</option>
+                        <option value="adults">Английский язык для взрослых от 18 лет</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="level" class="form-label">Уровень:</label>
+                    <select id="level" name="level" class="form-select">
+                        <option value="beginner">Начальный</option>
+                        <option value="intermediate">Средний</option>
+                        <option value="advanced">Продвинутый</option>
+                    </select>
+                </div>
             </form>
         </div>
+
         <button type="button" class="button" id="bookButton">Подтвердить</button>
     </div>
 <script src = "{% static 'js/confirmation.js' %}"></script>

@@ -102,6 +102,8 @@ class Booking(models.Model):
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь")
     open_slot = models.OneToOneField(OpenSlot, on_delete=models.CASCADE, verbose_name="Открытый слот")
+    program = models.CharField(max_length=50, verbose_name="Программа", default='general')
+    level = models.CharField(max_length=50, verbose_name="Уровень", default='beginner')
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, verbose_name="Статус бронирования",
                               default="confirmed")
 

@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fef9f4, #f0f0f0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,10 +12,10 @@ body {
 .container {
     width: 20rem;
     height: 40rem;
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -26,10 +26,11 @@ body {
 }
 
 .icon {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    margin-right: 15px;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .block span {
@@ -38,15 +39,27 @@ body {
 }
 
 h1 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 1.8rem;
 }
 
 h3 {
-    font-size: 15px;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    padding: 0;
+    text-align: left;
 }
 
 .clickable-block {
@@ -145,6 +158,19 @@ a {
 }
 
 /* Стили для блока с преподавателями */
+
+#teacherBlock {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#teacherBlock span {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.4;
+}
+
 .block#teacher img.icon {
     width: 100px;
     height: 100px;
@@ -160,6 +186,16 @@ a {
     margin-bottom: 20px;
 }
 
+.time {
+    font-size: 16px;
+    color: #222;
+    text-align: center;
+    background-color: #fff3e0;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ffc999;
+}
+
 .date, .time {
     padding: 10px 15px;
     border: 1px solid #ccc;
@@ -169,14 +205,13 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.date:hover, .time:hover {
-    background-color: #f0f0f0;
-}
-
 .date.selected, .time.selected {
     background-color: #ffcc99;
     border-color: #ffcc99;
+    font-weight: 600;
 }
+
+
 
 #bookButton {
     display: block;
@@ -193,9 +228,10 @@ a {
 
 /* Для активных дат с временем */
 .date.has-time {
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
+    background-color: #ffcc99;
+    font-weight: 600;
+    border-radius: 5px;
+}
 
 /* Для дат без времени */
 .date.inactive {
@@ -208,32 +244,46 @@ a {
 }
 
 /* Стили для формы дополнительных данных */
+.form-section {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 #additionalDataForm {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Стили для label */
-#additionalDataForm label {
-    font-size: 16px;
-    font-weight: 400;
-    display: block;
-    margin-bottom: 5px;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-/* Выпадающие списки (select) */
-#additionalDataForm select {
-    width: 100%;
+.form-label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.form-select {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 14px;
-    background-color: white;
-    cursor: pointer;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-timeBlock-confirm {
-border: none;
-padding: 10px;
+.form-select:focus {
+    outline: none;
+    border-color: #ff9a5a;
+    background-color: #fff3eb;
 }
